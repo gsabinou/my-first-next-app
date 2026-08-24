@@ -1,16 +1,29 @@
 // src/app/api/products/route.ts
-import { NextResponse } from 'next/server';
 
-// Usaremos os mesmos dados mockados por enquanto.
-// Em um cenário real, isso viria de um banco de dados.
-const products = [
-    { id: 1, title: 'Smartphone X', price: 2999.99 },
-    { id: 2, title: 'Notebook Pro', price: 7499.00 },
-    { id: 3, title: 'Fone de Ouvido BT', price: 499.50 },
-    { id: 4, title: 'Smartwatch 2', price: 1299.00 },
-];
+import { NextResponse } from 'next/server';
+import { products } from '../../lib/data';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export async function GET(request: Request) {
     return NextResponse.json(products);
+}
+
+export async function POST(request: Request) {
+    const newProductData = await request.json();
+
+    // Validação simples
+    if (!newProductData.title || !newProductData.price) {
+        return NextResponse.json({ error: 'Dados incompletos' }, { status: 400 });
+    }
+
+    const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+
+    const newProduct = {
+        id: newId,
+        ...newProductData,
+    };
+
+    products.push(newProduct);
+
+    return NextResponse.json(newProduct, { status: 201 }); // 201 Created
 }
