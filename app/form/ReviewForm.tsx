@@ -3,7 +3,7 @@
 
 import { useActionState } from "react";
 import { submitReview, FormState } from "../actions";
-import { SubmitButton } from "../components/SubmitButton";
+import { SubmitButton } from "../(components)/SubmitButton";
 import { useEffect, useRef } from "react";
 
 const initialState: FormState = {

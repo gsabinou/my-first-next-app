@@ -1,8 +1,8 @@
-// app/components/AddToCartButton.tsx
-
-"use client"; // Marca este como um Client Component
+// src/components/AddToCartButton.tsx (versão atualizada)
+"use client";
 
 import { useState } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 
 export default function AddToCartButton({ productId }: { productId: number }) {
     const [isAdded, setIsAdded] = useState(false);
@@ -10,16 +10,16 @@ export default function AddToCartButton({ productId }: { productId: number }) {
     const handleAddToCart = () => {
         alert(`Produto ${productId} adicionado ao carrinho!`);
         setIsAdded(true);
-        setTimeout(() => setIsAdded(false), 2000); // Reseta o estado após 2 segundos
+        setTimeout(() => setIsAdded(false), 2000);
     };
 
     return (
         <button
             onClick={handleAddToCart}
             disabled={isAdded}
-            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400"
+            className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400"
         >
-            {isAdded ? 'Adicionado!' : 'Adicionar ao Carrinho'}
+            <FaShoppingCart />{isAdded ? 'Adicionado!' : 'Adicionar ao Carrinho'}
         </button>
     );
 }

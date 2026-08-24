@@ -1,13 +1,13 @@
 // app/page.tsx
 import { Suspense } from "react";
-import { PromoBanner } from "./components/PromoBanner";
-import { ProductList } from "./components/ProductList";
-import { ManufacturerInfo } from "./components/ManufacturerInfo";
+import { PromoBanner } from "./(components)/PromoBanner";
+import { ProductList } from "./(components)/ProductList";
+import { ManufacturerInfo } from "./(components)/ManufacturerInfo";
 // app/page.tsx (Atualizado)
 // ... outros imports
-import { ProductReviews } from "./components/ProductReviews";
+import { ProductReviews } from "./(components)/ProductReviews";
 import { ReviewForm } from "./form/ReviewForm";
-import CollapsibleSection from "./components/CollapsibleSection";
+import CollapsibleSection from "./(components)/CollapsibleSection";
 
 export default function Home() {
   return (
